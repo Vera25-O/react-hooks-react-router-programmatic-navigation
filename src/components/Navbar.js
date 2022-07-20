@@ -1,4 +1,4 @@
-import React from "react";
+
 import { NavLink, useHistory } from "react-router-dom";
 
 const linkStyles = {
@@ -10,13 +10,22 @@ const linkStyles = {
   color: "white",
 };
 
-function Navbar({ setIsLoggedIn }) {
+function Navbar({ onLogout}) {
   const history = useHistory();
 
-  function handleLogout() {
-    setIsLoggedIn(false);
+
+  function handleClick() {
+    // logout the user
+    onLogout();
+    // then navigate them to the login page
     history.push("/login");
   }
+
+
+  // function handleLogout() {
+  //   setIsLoggedIn(false);
+  //   history.push("/login");
+  // }
 
   return (
     <div>
@@ -53,7 +62,7 @@ function Navbar({ setIsLoggedIn }) {
       >
         Login
       </NavLink>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleClick}>Logout</button>
     </div>
   );
 }
